@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add `build:migrate` command to port a repository's hand-rolled FAKE/Paket build
+  infra onto the shared `Alma.Build` NuGet package.
 
 ## 1.5.0 - 2025-04-28
 - Use net9.0

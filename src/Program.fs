@@ -98,6 +98,19 @@ let main argv =
             Execute = RepositoryBuildListCommand.execute
         }
 
+        command "build:migrate" {
+            Description = "Migrate a repository's hand-rolled FAKE/Paket build infra onto the shared Alma.Build NuGet package."
+            Help = commandHelp [
+                "The <c:dark-green>{{command.name}}</c> migrates a repository's <c:dark-yellow>build/</c> infra onto <c:dark-yellow>Alma.Build</c>:"
+                "        <c:dark-green>dotnet {{command.full_name}}</c> <c:dark-yellow>path-to-repository/</c>"
+            ]
+            Arguments = MigrateBuildCommand.arguments
+            Options = MigrateBuildCommand.options
+            Initialize = None
+            Interact = None
+            Execute = MigrateBuildCommand.execute
+        }
+
         command "azure:func" {
             Description = "Calls a azure function."
             Help = commandHelp [

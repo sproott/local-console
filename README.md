@@ -45,6 +45,8 @@ dist/local-console list
         list                   Lists commands
     azure
         azure:func             Calls a azure function.
+    build
+        build:migrate          Migrate a repository's hand-rolled FAKE/Paket build infra onto the shared Alma.Build NuGet package.
     dir
         dir:sub:remove         Remove a subdir(s) (and its content) found in the dir.
     normalize

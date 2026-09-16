@@ -24,6 +24,7 @@
         <Compile Include="Command/RepositoryCreate.fs" />
         <Compile Include="Command/DirRemoveSubdirCommand.fs" />
         <Compile Include="Command/RepositoryBuildList.fs" />
+        <Compile Include="Command/MigrateBuildCommand.fs" />
         <Compile Include="Command/Normalize.fs" />
         <Compile Include="Command/PhoneCodeStats.fs" />
         <Compile Include="Command/ContactStats.fs" />

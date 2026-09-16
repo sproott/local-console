@@ -10,6 +10,7 @@ nuget LibGit2Sharp
 nuget Newtonsoft.Json
 nuget libphonenumber-csharp
 nuget Fake.IO.FileSystem
+nuget Fake.Core.Process
 
 // [ FAKE GROUP ]
 group Build
