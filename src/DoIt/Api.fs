@@ -6,7 +6,7 @@ open System.Net
 open FSharp.Data
 open FSharp.Data.HttpRequestHeaders
 open MF.Utils
-open MF.ErrorHandling
+open Feather.ErrorHandling
 open MF.DoIt
 
 type Credentials = {
@@ -156,7 +156,7 @@ module Api =
 
     [<RequireQualifiedAccess>]
     module private ParseEntity =
-        open MF.ErrorHandling.Option.Operators
+        open Feather.ErrorHandling.Option.Operators
 
         type private EntitySchema = JsonProvider<"schema/entity.json", SampleIsList=true>
         type private SubtaskEntitySchema = JsonProvider<"schema/subtaskEntity.json", SampleIsList=true>
@@ -252,7 +252,7 @@ module Api =
             }
         }
 
-        open MF.ErrorHandling.AsyncResult.Operators
+        open Feather.ErrorHandling.AsyncResult.Operators
 
         let task loadSubtasks loadComments = entity (Some "task") loadSubtasks loadComments >!> ParsedEntity.task
         let project = entity (Some "project") (fun _ -> AsyncResult.ofSuccess []) (fun _ -> AsyncResult.ofSuccess []) >!> ParsedEntity.project

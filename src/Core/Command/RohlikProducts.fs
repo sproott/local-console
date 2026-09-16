@@ -4,9 +4,9 @@ namespace MF.LocalConsole
 module RohlikProductsCommand =
     open System
     open System.IO
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
-    open MF.ErrorHandling
+    open Feather.ErrorHandling
     open MF.Rohlik
 
     type Arguments = {

@@ -3,13 +3,13 @@ namespace MF.LocalConsole
 [<RequireQualifiedAccess>]
 module DoitBackupCommand =
     open System.IO
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
-    open MF.ErrorHandling
+    open Feather.ErrorHandling
     open MF.DoIt
 
     type Output =
-        | Stdout of MF.ConsoleApplication.Output
+        | Stdout of Feather.ConsoleApplication.Output
         | File of string
 
     type Credentials = Credentials
@@ -61,7 +61,7 @@ module DoitBackupCommand =
     open Path.Operators
     open AsyncResult.Operators
 
-    let private run (output: MF.ConsoleApplication.Output) useStatic credentialsFile commandOutput = asyncResult {
+    let private run (output: Feather.ConsoleApplication.Output) useStatic credentialsFile commandOutput = asyncResult {
         let! credentials =
             credentialsFile
             |> Credentials.parse

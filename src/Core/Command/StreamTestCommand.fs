@@ -8,9 +8,9 @@ module StreamTestCommand =
     open System.Text
     open System.Threading.Tasks
 
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
-    open MF.ErrorHandling
+    open Feather.ErrorHandling
 
     [<RequireQualifiedAccess>]
     module StreamFile =

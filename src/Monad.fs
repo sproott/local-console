@@ -1,6 +1,6 @@
 namespace MF.Monad
 
-open MF.ErrorHandling
+open Feather.ErrorHandling
 
 module Helper =
     let runAsyncResult (ar: AsyncResult<'a, 'e>) =
@@ -14,7 +14,7 @@ module Helper =
 module WriterExample =
     [<RequireQualifiedAccess>]
     module WriterOld =
-        open MF.ConsoleApplication
+        open Feather.ConsoleApplication
 
         type Writer<'A> = Writer of ('A * string)
 
@@ -365,7 +365,7 @@ module ReaderWriterExample =
         }
 
 module Monad =
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
 
     let execute = ExecuteAsync <| fun (input, output) -> async {
         output.Title "Monad Examples"

@@ -8,9 +8,9 @@ module CognitoStats =
     open System.Net.Mail
     open System.IO
     open FSharp.Data
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
-    open MF.ErrorHandling
+    open Feather.ErrorHandling
 
     let args = [
         Argument.required "clients" "Clients input (json file)."
@@ -55,7 +55,7 @@ module CognitoStats =
         Count: int
     }
 
-    let private processEvents (output: MF.ConsoleApplication.Output) events =
+    let private processEvents (output: Feather.ConsoleApplication.Output) events =
         use progress = output.ProgressStart "Processing events" (Seq.length events)
 
         let state = ConcurrentDictionary<StateKey, int>()

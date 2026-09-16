@@ -6,7 +6,7 @@ module ContactStatsCommand =
     open System.Collections.Concurrent
     open System.IO
     open FSharp.Data
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
 
     let execute = Execute <| fun (input, output) ->
         let fileName = input |> Input.Argument.asString "file-name" |> Option.defaultValue "-"

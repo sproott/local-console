@@ -10,15 +10,15 @@ type DoItBackup = {
 [<RequireQualifiedAccess>]
 module DoItBackup =
     open System
-    open MF.ConsoleStyle
+    open Feather.ConsoleStyle
     open MF.Utils
-    open MF.ErrorHandling
-    open MF.ErrorHandling.AsyncResult.Operators
+    open Feather.ErrorHandling
+    open Feather.ErrorHandling.AsyncResult.Operators
 
     [<AutoOpen>]
     module private Loader =
         (* type private Progress = // todo - remove when ConsoleStyle 3.0.0 is out
-            | Active of MF.ConsoleApplication.ProgressBar
+            | Active of Feather.ConsoleApplication.ProgressBar
             | Inactive
 
             with
@@ -38,7 +38,7 @@ module DoItBackup =
         type TasksLoader = Api.LoadedTasks -> Credentials -> AsyncResult<Task list, exn list>
 
         /// Load tasks from loaders sequentually with progress
-        let loadTasks (output: MF.ConsoleApplication.Output) credentials =
+        let loadTasks (output: Feather.ConsoleApplication.Output) credentials =
             let rec load progress (acc: Task list): (string * TasksLoader) list -> _ = function
                 | [] -> acc |> AsyncResult.ofSuccess
                 | (title, loader) :: rest -> asyncResult {
@@ -82,7 +82,7 @@ module DoItBackup =
                 <!> List.concat
                 <@> List.concat
 
-    let load (output: MF.ConsoleApplication.Output) credentials = asyncResult {
+    let load (output: Feather.ConsoleApplication.Output) credentials = asyncResult {
         output.Title "[DoIt][Backup] Load data for backup"
         let prefix = "<c:cyan>[DoIt][Backup]</c>"
 

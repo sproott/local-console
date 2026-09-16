@@ -1,6 +1,6 @@
 open System
 open System.IO
-open MF.ConsoleApplication
+open Feather.ConsoleApplication
 open MF.LocalConsole
 open MF.LocalConsole.Console
 open MF.Monad

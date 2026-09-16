@@ -4,7 +4,7 @@ namespace MF.LocalConsole
 module RepositoryCreateCommand =
     open System.IO
     open FSharp.Data
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
     open LibGit2Sharp
 
@@ -24,25 +24,25 @@ module RepositoryCreateCommand =
     let private addShellCommand command =
         shellLines <- command :: shellLines
 
-    let private createRepository (output: MF.ConsoleApplication.Output) mode repositoryName =
+    let private createRepository (output: Feather.ConsoleApplication.Output) mode repositoryName =
         match mode with
         | CreateShell -> sprintf "echo \"Create %s ...\"" repositoryName |> addShellCommand
         | DryRun
         | CreateRepositories -> output.Section <| sprintf "Create %s" repositoryName
 
-    let private skipRepository (output: MF.ConsoleApplication.Output) mode reason =
+    let private skipRepository (output: Feather.ConsoleApplication.Output) mode reason =
         match mode with
         | CreateShell -> sprintf "echo \" - skipped for %s ...\"" reason |> addShellCommand
         | DryRun
         | CreateRepositories -> output.Message <| sprintf "<c:yellow> - skipped for %s</c>" reason
 
-    let private ensureDir (output: MF.ConsoleApplication.Output) mode dir =
+    let private ensureDir (output: Feather.ConsoleApplication.Output) mode dir =
         match mode with
         | CreateShell -> sprintf "mkdir -p %A" dir |> addShellCommand
         | DryRun -> output.Message <| sprintf " - <c:cyan>Directory.ensure</c> %A -> %s" dir (if Directory.Exists dir then "<c:gray>already there</c>" else "<c:yellow>create</c>")
         | CreateRepositories -> Directory.ensure dir
 
-    let private copyFile (output: MF.ConsoleApplication.Output) mode repositoryName source target =
+    let private copyFile (output: Feather.ConsoleApplication.Output) mode repositoryName source target =
         match mode with
         | CreateShell ->
             if File.Exists source then sprintf "cp -R %A %A" source target |> addShellCommand
@@ -54,13 +54,13 @@ module RepositoryCreateCommand =
 
     open Path.Operators
 
-    let private cloneRepository (output: MF.ConsoleApplication.Output) mode repositoryName url targetDir =
+    let private cloneRepository (output: Feather.ConsoleApplication.Output) mode repositoryName url targetDir =
         match mode with
         | CreateShell -> sprintf "git clone %s %A" url (targetDir / repositoryName) |> addShellCommand
         | DryRun -> output.Message <| sprintf " - <c:cyan>Repository.Clone</c> %A -> %A" url targetDir
         | CreateRepositories -> Repository.Clone(url, targetDir) |> ignore  // todo - https://stackoverflow.com/questions/40700154/clone-a-git-repository-with-ssh-and-libgit2sharp
 
-    let private run (output: MF.ConsoleApplication.Output) (ignoredRemotes: string list) mode backupDir =
+    let private run (output: Feather.ConsoleApplication.Output) (ignoredRemotes: string list) mode backupDir =
         let repositories =
             [ backupDir ]
             |> FileSystem.getAllFiles

@@ -2,7 +2,7 @@ namespace MF.LocalConsole
 
 [<RequireQualifiedAccess>]
 module RepositoryBuildListCommand =
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.LocalConsole.Console
     open MF.Utils
 
@@ -39,7 +39,7 @@ module RepositoryBuildListCommand =
             | _ -> None
         | _ -> None
 
-    let private run (output: MF.ConsoleApplication.Output) filter paths =
+    let private run (output: Feather.ConsoleApplication.Output) filter paths =
         paths
         |> FileSystem.getAllFiles
         |> List.filter (fun file -> [ "build.fsx"; "Build.fs" ] |> List.exists (fun sub -> String.contains sub file))

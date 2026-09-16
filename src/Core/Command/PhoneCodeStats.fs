@@ -6,7 +6,7 @@ module PhoneCodeStatsCommand =
     open System.Collections.Concurrent
     open System.IO
     open FSharp.Data
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
 
     type PhoneCodes = JsonProvider<"schema/countryCodes.json", SampleIsList=true>
 

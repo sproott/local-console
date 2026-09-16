@@ -1,5 +1,6 @@
 FSharp.Data
-MF.ConsoleApplication
+Feather.ConsoleApplication
+Feather.ErrorHandling
 LibGit2Sharp
 Newtonsoft.Json
 libphonenumber-csharp

@@ -2,7 +2,7 @@ namespace MF.DoIt
 
 [<RequireQualifiedAccess>]
 module Dump =
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
 
     let private findIn<'Item, 'ItemKey when 'ItemKey : equality>
         (items: 'Item list)

@@ -1,2 +1,4 @@
 FSharp.Data
-MF.ConsoleApplication
+Feather.ConsoleApplication
+Feather.ConsoleStyle
+Feather.ErrorHandling

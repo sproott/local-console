@@ -8,7 +8,7 @@ module NormalizeCommand =
     open System.Net.Mail
     open System.IO
     open FSharp.Data
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
 
     type NormalizationResponse = JsonProvider<"schema/response.json", SampleIsList=true>
@@ -96,7 +96,7 @@ module NormalizeCommand =
                 phone
             |> TextRequest
 
-    let private normalizeLine (output: MF.ConsoleApplication.Output) baseUrl inputType progress results (line: string) = async {
+    let private normalizeLine (output: Feather.ConsoleApplication.Output) baseUrl inputType progress results (line: string) = async {
         let line = line.Trim '"'
 
         let! rawResponse =
@@ -195,7 +195,7 @@ module NormalizeCommand =
                 [ string line; "<c:red>Error</c>" ]
     }
 
-    let private debugResults (output: MF.ConsoleApplication.Output) results =
+    let private debugResults (output: Feather.ConsoleApplication.Output) results =
         output.Title "Real responses"
 
         output.SubTitle "Ok"
@@ -272,7 +272,7 @@ module NormalizeCommand =
             results.Errors.Clear()
         )
 
-    let private normalizeLines (output: MF.ConsoleApplication.Output) baseUrl inputType outputDir lines =
+    let private normalizeLines (output: Feather.ConsoleApplication.Output) baseUrl inputType outputDir lines =
         let errors = ResultCollection()
         let lineCount = lines |> Seq.length
         let progress = lineCount |> output.ProgressStart "Function calls"

@@ -1,7 +1,7 @@
 namespace MF.LocalConsole
 
 module Console =
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
 
     let commandHelp lines = lines |> String.concat "\n\n" |> Some
 

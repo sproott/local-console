@@ -4,12 +4,12 @@ namespace MF.LocalConsole
 module RepositoryBackupCommand =
     open System
     open System.IO
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
     open LibGit2Sharp
 
     type Output =
-        | Stdout of MF.ConsoleApplication.Output
+        | Stdout of Feather.ConsoleApplication.Output
         | File of string
 
     type CompleteRepository =
@@ -68,7 +68,7 @@ module RepositoryBackupCommand =
 
     open Path.Operators
 
-    let private run (output: MF.ConsoleApplication.Output) completeRepository ignoredFiles ignoredRepositories commandOutput paths =
+    let private run (output: Feather.ConsoleApplication.Output) completeRepository ignoredFiles ignoredRepositories commandOutput paths =
         let entryPath (entry: StatusEntry) = entry.FilePath
 
         let repositories =

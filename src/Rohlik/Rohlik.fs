@@ -7,7 +7,7 @@ open System.Web
 open FSharp.Data
 open FSharp.Data.HttpRequestHeaders
 open MF.Utils
-open MF.ErrorHandling
+open Feather.ErrorHandling
 
 type Credentials = {
     Username: string

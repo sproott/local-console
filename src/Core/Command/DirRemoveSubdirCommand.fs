@@ -3,7 +3,7 @@ namespace MF.LocalConsole
 [<RequireQualifiedAccess>]
 module DirRemoveSubdirCommand =
     open System.IO
-    open MF.ConsoleApplication
+    open Feather.ConsoleApplication
     open MF.Utils
     open Fake.IO
     open Fake.IO.FileSystemOperators
@@ -28,7 +28,7 @@ module DirRemoveSubdirCommand =
         |> fixPath []
         |> String.concat "/"
 
-    let private run (output: MF.ConsoleApplication.Output) mode (dirsToRemove: string list) dir =
+    let private run (output: Feather.ConsoleApplication.Output) mode (dirsToRemove: string list) dir =
         let dirsToRemoveSet = dirsToRemove |> Set.ofList
 
         let pathsToDirsToRemove =
