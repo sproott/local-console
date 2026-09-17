@@ -104,7 +104,7 @@ module StreamTestCommand =
             printfn "Finished!"
         }
 
-        let testWithBufferedStreamSeq fileName: string seq = seq {
+        let testWithBufferedStreamSeq fileName: seq<string> = seq {
             use fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read)
             use fileBufferStream = new BufferedStream(fileStream, 32)
 
@@ -134,7 +134,7 @@ module StreamTestCommand =
                 printfn "Finished seq!"
         }
 
-        let testWithBufferedStreamSeqReader fileName: string seq = seq {
+        let testWithBufferedStreamSeqReader fileName: seq<string> = seq {
             use fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read)
             use fileBufferStream = new BufferedStream(fileStream, 32)
 
@@ -199,7 +199,7 @@ module StreamTestCommand =
                 new BufferedStream(new FileStream(file, FileMode.Open, FileAccess.Read), 1024) :> Stream
 
             let combine (streams: Stream list) = task {
-                let pipe = new Pipe()
+                let pipe = Pipe()
                 let writer = pipe.Writer
 
                 printfn "[Combine] Starting ..."
@@ -232,7 +232,7 @@ module StreamTestCommand =
                 new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize, true) :> Stream
 
             let combine (streams: Stream list) = task {
-                let pipe = new Pipe()
+                let pipe = Pipe()
                 let writer = pipe.Writer
 
                 printfn "[Combine] Starting lazy streaming ..."

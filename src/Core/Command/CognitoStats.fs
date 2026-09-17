@@ -123,7 +123,7 @@ module CognitoStats =
                 |> Seq.toList
             )
 
-        let events: string seq =
+        let events: seq<string> =
             if File.Exists events then File.ReadLines events
             else Seq.empty
 

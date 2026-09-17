@@ -178,6 +178,7 @@ module Api =
         let response = LoginResponseSchema.Parse(responseText)
 
         let result =
+            // fsharplint:disable FL0065
             if response.Status = 200 then
                 {
                     Status = response.Status
@@ -199,6 +200,7 @@ module Api =
                     UserInfo = { UserId = None; AddressId = None }
                     Message = response.Messages |> Array.tryHead |> Option.map (fun m -> m.Content)
                 }
+            // fsharplint:enable
 
         return result, cookies
     }

@@ -139,7 +139,7 @@ module RohlikProductsCommand =
             Password = password
         }
 
-        let! (productSummary : ProductSummary list) =
+        let! (productSummary: ProductSummary list) =
             Api.getOrderHistoryProductSummary credentials arguments.OrderLimit
             |> AsyncResult.mapError (fun ex ->
                 CommandError.Exception ex |> ConsoleApplicationError.CommandError)

@@ -65,17 +65,17 @@ module RohlikAnalyzeCommand =
     let private formatProductSummaryForSheets (productSummary: ProductSummary list) (output: Output) =
         // CSV header
         output.Message "Product Name\tTotal Qty\tOrder Count\tLast Order\tAvg Price"
-        
+
         // CSV data rows
         productSummary
         |> List.iter (fun p ->
             // Use comma as decimal separator and no currency, prefix with quote to prevent auto-conversion
             let avgPrice = sprintf "'%.2f" p.AveragePrice |> fun s -> s.Replace(".", ",")
-            let row = sprintf "%s\t%d\t%d\t%s\t%s" 
-                        p.Name 
-                        p.TotalQuantity 
-                        p.OrderCount 
-                        (p.LastOrderDate.ToString("yyyy-MM-dd")) 
+            let row = sprintf "%s\t%d\t%d\t%s\t%s"
+                        p.Name
+                        p.TotalQuantity
+                        p.OrderCount
+                        (p.LastOrderDate.ToString("yyyy-MM-dd"))
                         avgPrice
             output.Message row
         )
@@ -107,7 +107,7 @@ module RohlikAnalyzeCommand =
             match input with
             | Input.Option.Has "sheets" _ -> true
             | _ -> false
-        
+
         if useSheetFormat then
             output.Message "Data in CSV format (copy/paste to Google Sheets):"
             output.Message "Instructions: Select the output below, copy it, then paste into Google Sheets."
